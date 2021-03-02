@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block content %}
+<h3 align="center">{{message}}</h3>
+{% if form.errors %}
+<p class="error"> Invalid Customer info </p>
+
+{% endif %}
+<form action="/crud_operations/addCustomerinfo/" method="post">{% csrf_token %}
+    <label>Customer Name : </label>
+    <input type="text" name="customername" value="" required><br>
+    <label> Aadhhar Id:</label>
+    <input type="text" name="aadhharId"  minlength="12" maxlength="12" required><br>
+    <label> Nominee Name:</label>
+    <input type="text" name="nomineeName" value="" required><br>
+    <label> Income:</label>
+    <input type="number" name="income" required><br>
+    <label> Address:</label>
+    <input type="text" name="Address" value="" required><br>
+    <label> Mobile Number:</label>
+    <input type="text" name="mobile"  minlength="10" maxlength="10" required><br>
+    <input type="submit" name="submit" value="Enter" />
+</form>
+<p> Click <a href="/crud_operations/viewCustomerinfo/" </a> to view customer records. </p>
+{% endblock %}

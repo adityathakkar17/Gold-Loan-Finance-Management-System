@@ -1,0 +1,22 @@
+{%extends "index.html" %}
+
+
+{% block content %}
+<h1>Customer List</h1>
+
+{% if customer %}
+{% for c in customer %}
+<!-- <a href="{{ c.get_absolute_url }}">{{ c.customerName }}</a> -->
+
+<li>{{ c.customerName }}--{{c.aadhharId}}
+    <form action="/crud_operations/delCustomerinfo/" method="post">{% csrf_token %}
+        <input type="hidden" name="aadhharId" value={{c.aadhharId}} />
+        <input type="submit" value="delete">
+    </form>
+</li>
+{% endfor %}
+{% else %}
+<p>There are no customers registered.</p>
+{% endif %}
+Click <a href="/crud_operations/getCustomerinfo/">to go back</a>
+{% endblock %}
