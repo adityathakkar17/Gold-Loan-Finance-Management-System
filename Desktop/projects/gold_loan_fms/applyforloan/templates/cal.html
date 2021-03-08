@@ -1,0 +1,57 @@
+<div class="tab-pane" id="tab_b">
+		<script language="javascript" type="text/javascript">
+        function emi()
+        {
+                var P = document.formval.pr_amt.value; // pick the form input value..
+                var rate = document.formval.int_rate.value; // pick the form input value..
+                var n = document.formval.period.value; // pick the form input value..
+                var r = rate/(12*100); // to calculate rate percentage..
+                var prate = (P * r * Math.pow((1+r),n*12))/(Math.pow((1+r),n*12)-1); // to calculate compound interest..
+                var emi = Math.ceil(prate * 100) / 100; // to parse emi amount..
+        // to assign value in field1 as fixed upto two decimal..				
+                document.formval4.field1.value = ("Monthly EMI: "+"₹ "+emi.toFixed(0));
+                
+        } 
+        </script>
+				<form name="formval" class="form-horizontal col-md-8" style="font-size:12px;">
+					<div class="form-group">
+						<label for="input" class="col-sm-4 control-label">Loan Amount</label>
+						<div class="col-sm-8">
+						<div class="input-group">
+						<span class="input-group-addon">₹</span>
+						<input type="text" class="form-control input-sm" id="idLoanAmount" name="pr_amt" placeholder="Enter Loan Amount">
+						</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input" class="col-sm-4 control-label">Loan Tenure</label>
+						<div class="col-sm-8">
+						<input type="text" class="form-control input-sm" id="idLoanTenure" placeholder="(in years)" name="period">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input" class="col-sm-4 control-label">Rate of Interest</label>
+						<div class="col-sm-8">
+						<div class="input-group">
+						<input type="text" class="form-control input-sm" id="idROI" name="int_rate">
+						<span class="input-group-addon">%</span>
+						</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-12">
+						<button type="button" name="calculate" value="Calculate" onclick="emi()" class="btn btn-primary">Calculate EMI</button>
+						<button type="reset" class="btn btn-link"><font color="white">Reset All</font></button>
+						</div>
+					</div>
+					
+				</form>
+				<form name="formval4" class="form-horizontal col-md-4" style="font-size:12px;">
+                
+					<div class="form-group">
+                    {{field1}}
+						<output class="col-sm-12" name="field1" style="font-color:white; font-size:20px; font-weight:bold; font-family:Roboto;"></output>
+					</div>
+                
+        		</form>
+        </div>
