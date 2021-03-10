@@ -1,39 +1,27 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-	<script
-	src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-	crossorigin="anonymous">
-	</script>
-	<!--<script>
-		$(function(){
-			$('#header').load('emicalculator.html');
-		});
-	</script> -->
 	<meta charset="utf-8">
-	<title>Apply For Loan</title>
+	<title>Apply for Loan</title>
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
-	<link rel="stylesheet" type="text/css" href="/static/loan/css/raleway-font.css">
-	<link rel="stylesheet" type="text/css" href="/static/loan/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/loanapplication/css/raleway-font.css">
+	<link rel="stylesheet" type="text/css" href="/static/loanapplication/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 	<!-- Jquery -->
 	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
 	<!-- Main Style Css -->
-    <link rel="stylesheet" href="/static/loan/css/style.css"/>
-	 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="/static/loan/css/style.css">
-  <script type="text/javascript" src="http://pg.gaarsam.com//html/assets/js/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="/static/loanapplication/css/style.css"/>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+	<script type="text/javascript" src="http://pg.gaarsam.com//html/assets/js/jquery.validate.min.js"></script>
 </head>
 <body>
-	<div class="page-content" style="background-image: url('/static/loan/images/wizard-v1.jpg')">
+	<div class="page-content" style="background-image: url('/static/loanapplication/images/wizard-v1.jpg')">
 		<div class="wizard-v1-content">
 			<div class="wizard-form">
-
 		        <form class="form-register" id="form-register" action="#" method="post">{% csrf_token %}
 		        	<div id="form-total">
-		        		<!-- SECTION 1  -->
+		        		<!-- SECTION 1 --> 
 			            <h2>
 			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
 			            	<span class="step-number">Step 1</span>
@@ -67,7 +55,7 @@
 								</div>  
 							</div>
 			            </section>
-						<!-- SECTION 2  -->
+						<!-- SECTION 2 -->
 			            <h2>
 			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
 			            	<span class="step-number">Step 2</span>
@@ -117,7 +105,7 @@
 								</div>
 							</div>
 			            </section>
-						<!-- SECTION 3  
+						<!-- SECTION 3   -->
 			            <h2>
 			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
 			            	<span class="step-number">Step 3</span>
@@ -125,9 +113,9 @@
 			            </h2>
 			            <section >
 						
-							{% include "cal.html" %}
+							{% include "calc.html" %}
 
-			            </section> -->
+			            </section>
 						<!--  SECTION 4 -->
 			            <h2>
 			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
@@ -283,11 +271,10 @@
 			</div>
 		</div>
 	</div>
-	<script src="/static/loan/js/jquery-3.3.1.min.js"></script>
+	<script src="/static/loanapplication/js/jquery-3.3.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-	<script src="/static/loan/js/jquery.steps.js"></script>
-	<script src="/static/loan/js/main.js"></script>
-	  
+	<script src="/static/loanapplication/js/jquery.steps.js"></script>
+	<script src="/static/loanapplication/js/main.js"></script>
 </body>
 </html>

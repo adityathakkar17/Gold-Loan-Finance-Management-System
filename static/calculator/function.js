@@ -1,79 +1,30 @@
-// Code By Webdevtrick ( https://webdevtrick.com )
-// Listen for Submit
-document.getElementById("loan-form").addEventListener("submit", function(e) {
-  // Hide Results
-  document.getElementById("result").style.display = "none";
+function CheckEMI()
+    {
+        var val1 = parseInt(document.getElementById("HomeLoanAmount").value);
+        var val2 = parseInt(document.getElementById("HomeLoanTenure").value);
+        var r = 9.5/(12*100); // to calculate rate percentage..
+        var ansD = document.getElementById("HomeLoanEMI20");
+        ansD.value = ((val1 * r * Math.pow((1+r),val2*12))/(Math.pow((1+r),val2*12)-1)).toFixed(0);
+    }
 
-  // Show Loader
-  document.getElementById("loading").style.display = "block";
 
-  setTimeout(calculateResults, 2000);
 
-  e.preventDefault();
+
+var rangeSlider = function(){
+  var slider = $('.range-slider'),
+      range = $('.range-slider__range'),
+      value = $('.range-slider__value');
+
+slider.each(function(){
+
+  value.each(function(){
+      var value = $(this).prev().attr('value');
+      $(this).html(value);
+  });
+
+  range.on('input', function(){
+      $(this).next(value).html(this.value);
+  });
 });
-
-// Calculate Results
-function calculateResults() {
-
-  const amount = document.getElementById("amount");
-  const interest = document.getElementById("interest");
-  const years = document.getElementById("years");
-  const monthlyPayment = document.getElementById("monthly-payment");
-  const totalPayment = document.getElementById("total-payment");
-  const totalInterest = document.getElementById("total-interest");
-
-  const principal = parseFloat(amount.value);
-  const calculatedInterest = parseFloat(interest.value) / 100 / 12;
-  const calculatedPayments = parseFloat(years.value) * 12;
-
-  // Computed Monthly payment
-  const x = Math.pow(1 + calculatedInterest, calculatedPayments);
-  const monthly = (principal * x * calculatedInterest) / (x - 1);
-
-  if (isFinite(monthly)) {
-    monthlyPayment.value = monthly.toFixed(2);
-    totalPayment.value = (monthly * calculatedPayments).toFixed(2);
-    totalInterest.value = (monthly * calculatedPayments - principal).toFixed(2);
-
-    // Show Results
-    document.getElementById("result").style.display = "block";
-
-    // Hide Loader
-    document.getElementById("loading").style.display = "none";
-  } else {
-    showError("Please check number inputs");
-  }
-}
-
-// Show Error
-function showError(error) {
-  // Hide Results
-  document.getElementById("result").style.display = "none";
-
-  // Hide Loader
-  document.getElementById("loading").style.display = "none";
-
-  // Create a div
-  const errorDiv = document.createElement("div");
-
-  // Get Elements
-  const card = document.querySelector(".card");
-  const heading = document.querySelector(".heading");
-
-  // Add class
-  errorDiv.className = "alert alert-danger";
-
-  // Create text node and append div
-  errorDiv.appendChild(document.createTextNode(error));
-
-  // Insert error above heading
-  card.insertBefore(errorDiv, heading);
-
-  // Clear Error after 3 seconds
-  setTimeout(clearError, 3000);
-
-  // Clear Error
-  function clearError() {
-    document.querySelector(".alert").remove();
-  }
-}
+};
+rangeSlider();
