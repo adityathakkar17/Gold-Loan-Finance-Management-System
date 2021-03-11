@@ -1,6 +1,12 @@
 body {
 	margin:  0;
 }
+.error{
+	color: #ff0707;
+	font-weight:bolder ;
+	text-align: center;
+	font-size: 30px;
+}
 .page-content {
 	width: 100%;
 	margin:  0 auto;

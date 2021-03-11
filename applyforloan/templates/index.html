@@ -16,10 +16,20 @@
 	<script type="text/javascript" src="http://pg.gaarsam.com//html/assets/js/jquery.validate.min.js"></script>
 </head>
 <body>
+	<h1 align="center"><a href="/loginmodule/home">Home</a></h1>
+	<div class="error">
+			{% if messages %}
+				{% for message in messages %}
+					{{message}}
+				{% endfor %}
+			{% endif %}
+		</div>
 	<div class="page-content" style="background-image: url('/static/loanapplication/images/wizard-v1.jpg')">
+		
+		
 		<div class="wizard-v1-content">
 			<div class="wizard-form">
-		        <form class="form-register" id="form-register" action="#" method="post">{% csrf_token %}
+		        <form class="form-register" id="form-register" action="/applyforloan/addCustomer/" method="POST">{% csrf_token %}
 		        	<div id="form-total">
 		        		<!-- SECTION 1 --> 
 			            <h2>
@@ -29,12 +39,12 @@
 			            </h2>
 			            <section>
 			                <div class="inner">
-								<div class="form-row">
+								<!-- <div class="form-row">
 									 <div class="form-holder form-holder-2">
 										<label for="username">Username*</label>
 										<input type="text" placeholder="Username" class="form-control" id="username" name="username" required>
 									</div>
-								</div> 
+								</div>  -->
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label for="email">Email Address*</label>
@@ -50,7 +60,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label for="confirm_password">Confirm Password*</label>
-										<input type="password" placeholder="Confirm Password" class="form-control" id="confirm_password" name="confirm_password" required>
+										<input type="password" placeholder="Confirm Password" class="form-control" id="confirm_password" name="confirm_password"  minlength=8 maxlength=14 required>
 									</div>
 								</div>  
 							</div>
@@ -66,13 +76,13 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label for="customerName">Customer Name*</label>
-										<input type="text" placeholder="Enter Full Name" class="form-control" minlelgth=10 maxlelgth=10 name="customerName" required>
+										<input type="text" placeholder="Enter Full Name" class="form-control" maxlelgth=50 name="customerName" required>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
-										<label for="aadhharId">aadhharId*</label>
-										<input type="number" placeholder="Aadhhar Id" class="form-control" minlelgth=10 maxlelgth=10 name="aadhharId" required>
+										<label for="aadhaarId">Aadhhar Id*</label>
+										<input type="number" placeholder="Aadhaar Id" class="form-control" minlelgth=12 maxlelgth=12 name="aadhaarId" required>
 									</div>
 								</div>
 								<div class="form-row">
@@ -94,8 +104,8 @@
 								</div>
 								<div class="form-row">
 									<div class="form-holder">
-										<label for="Address">Address*</label>
-										<input type="text" placeholder="Address" class="form-control" id="Address" name="Address" required>
+										<label for="address">Address*</label>
+										<input type="text" placeholder="Address" class="form-control" id="address" name="address" required>
 									</div>
 							
 									<div class="form-holder">
@@ -264,6 +274,7 @@
 										</tbody>
 									</table>
 								</div>
+							<button type="submit">Apply for Loan</button>
 							</div>
 			            </section>
 		        	</div>
