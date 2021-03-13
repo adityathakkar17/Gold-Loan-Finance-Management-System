@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Bootstrap Profile Page Design - Bootsnipp.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <style type="text/css">
+        body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    width:100%;
+    height:1050px;
+}
+.emp-profile{
+    padding: 3%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    border-radius: 0.5rem;
+    background: #fff;
+    width:100%;
+    height:100%;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Payment scripts-->
+    <!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/static/payment/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/payment/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/payment/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/payment/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/payment/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/payment/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/payment/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/payment/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+<div class=" emp-profile">
+            <!--<form method="post">-->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="/static/images/logo_glfms.jpg" alt=""/>
+                            <!--<div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        Welcome, {{c.customerName}} !!!
+                                    </h5>
+                                    <br>
+                                    
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="assets-tab" data-toggle="tab" href="#assets" role="tab" aria-controls="assets" aria-selected="false">Assets</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payment</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="payment_info-tab" data-toggle="tab" href="#payment_info" role="tab" aria-controls="payment_info" aria-selected="false">Payment Information</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-2">
+                        <a href="/edit_profile">Edit Profile</a>
+                         <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> 
+                    </div>-->
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Customer Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{c.customerName}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Aadhhar Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{c.aadhaarId}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{c.username}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone Number</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{c.mobile}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nominee Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{c.nomineeName}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{c.address}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Income</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{c.income}}</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="assets" role="tabpanel" aria-labelledby="assets-tab">
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Gold Weight</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{a.weight}} gms</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Gold Type</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if a.goldtype == 'B' %}
+                                                    <p>BISCUIT</p>
+                                                {% elif a.goldtype == 'O' %}
+                                                    <p>ORNAMENT</p>
+                                                {% elif a.goldtype == 'C' %}
+                                                    <p>COIN</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Total Principle Amount</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>₹ {{appl.principalAmount}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>EMI</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>₹ {{appl.emi}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Loan Tenure</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{appl.lentLoanTenure}} years</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Lent Gold Value</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>₹ {{appl.lentGoldValue}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Lent Rate Of Interest</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{appl.lentRateOfInterest}} %</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Loan Application Status</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{appl.loanApplicationStatus}}</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                                
+                                    {% if appl.loanApplicationStatus == 'APP' %}
+                                        {% include "view_payment_details.html" %}
+                                        <!--<iframe src="payment_details/view_payment_details.html" width="1000px" height="550px" ></iframe> -->
+                                    {% elif appl.loanApplicationStatus == 'FUP' %}
+                                        <p>Your Application Staus is under process</p>
+                                    {% elif appl.loanApplicationStatus == 'REJ' %}
+                                        <p>Your Application Staus is rejected</p>
+                                    {% endif %}
+                            </div>
+                            <div class="tab-pane fade" id="payment_info" role="tabpanel" aria-labelledby="payment_info-tab">
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Card Type</label>
+                                            </div><br>
+                                            <div class="col-md-6">
+                                                <p>{{p.cardtype}}</p>
+                                            </div><br>
+                                    </div><br>
+									<div class="row">
+                                            <div class="col-md-6">
+                                                <label>Card Number</label>
+                                            </div><br>
+                                            <div class="col-md-6">
+                                                <p>{{p.cardnumber}}</p>
+                                            </div><br>
+                                    </div><br>
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                                <label>CVC</label>
+                                            </div><br>
+                                            <div class="col-md-6">
+                                                <p>{{p.cvc}}</p>
+                                            </div><br>
+                                    </div><br>
+                                    
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Expiry Month</label>
+                                            </div><br>
+                                            <div class="col-md-6">
+                                                <p>{{p.expmonth}}</p>
+                                            </div><br>
+                                    </div><br>
+                                    <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Expiry Year</label>
+                                            </div><br>
+                                            <div class="col-md-6">
+                                                <p>{{p.expyear}}</p>
+                                            </div><br>
+                                    </div><br>
+                                </div><br>
+                                
+                        </div>
+                    </div>
+                </div>
+           <!-- </form>-->           
+        </div>
+
+<!--===============================================================================================	
+	<script src="/static/payment/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================
+	<script src="/static/payment/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/payment/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================
+	<script src="/static/payment/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================
+	<script src="/static/payment/js/main.js"></script>-->
+
+</body>
+</html>

@@ -41,19 +41,19 @@ $(function(){
         onStepChanging: function (event, currentIndex, newIndex) { 
             var username = $('#username').val();
             var email = $('#email').val();
-            var cardtype = $('#card-type').val();
-            var cardnumber = $('#card-number').val();
+            var cardtype = $('#cardtype').val();
+            var cardnumber = $('#cardnumber').val();
             var cvc = $('#cvc').val();
-            var month = $('#month').val();
-            var year = $('#year').val();
+            var month = $('#expmonth').val();
+            var year = $('#expyear').val();
 
             $('#username-val').text(username);
             $('#email-val').text(email);
-            $('#card-type-val').text(cardtype);
-            $('#card-number-val').text(cardnumber);
+            $('#cardtype-val').text(cardtype);
+            $('#cardnumber-val').text(cardnumber);
             $('#cvc-val').text(cvc);
-            $('#month-val').text(month);
-            $('#year-val').text(year);
+            $('#expmonth-val').text(month);
+            $('#expyear-val').text(year);
 
             $("#form-register").validate().settings.ignore = ":disabled,:hidden";
             return $("#form-register").valid();
