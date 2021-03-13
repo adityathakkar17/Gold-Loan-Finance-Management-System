@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.template.context_processors import csrf
 from django.contrib import messages
-from applyforloan.models import Customer, GoldAsset, LoanApplication, Payment
+from applyforloan.models import Customer, GoldAsset, LoanApplication,Payment
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import requires_csrf_token
 

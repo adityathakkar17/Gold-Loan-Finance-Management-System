@@ -127,7 +127,7 @@
 						<!--  SECTION 4 -->
 			            <h2>
 			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
-			            	<span class="step-number">Step 3</span>
+			            	<span class="step-number">Step 4</span>
 			            	<span class="step-text">Loan Infomation</span>
 			            </h2>
 			            <section>
@@ -164,15 +164,15 @@
 						<!-- SECTION 5 -->
 			            <h2> 
 			            	<span class="step-icon"><i class="zmdi zmdi-card"></i></span>
-			            	<span class="step-number">Step 4</span>
+			            	<span class="step-number">Step 5</span>
 			            	<span class="step-text">Payment Infomation</span>
 			            </h2>
 			            <section>
 			                <div class="inner">
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
-										<label for="cardtype">Card Type</label>
-										<select name="cardtype" id="cardtype" class="form-control" style="height:50px">
+										<label for="card-type">Card Type*</label>
+										<select name="cardtype" id="cardtype" class="form-control" style="height:50px" required>
 											<option value="Select Credit Card Type" disabled selected>Select Credit Card Type</option>
 											<option value="Business Credit Cards">Business Credit Cards</option>
 											<option value="Limited Purpose Cards">Limited Purpose Cards</option>
@@ -188,8 +188,8 @@
 										<input type="text" name="cardnumber" class="card-number" id="card-number" placeholder="ex: 489050625008xxxx">
 									</div>
 									<div class="form-holder">
-										<label for="cvc">CVC</label>
-										<input type="text" name="cvc" class="cvc" id="cvc" placeholder="xxx">
+										<label for="cvc">CVC*</label>
+										<input type="text" name="cvc" class="cvc" id="cvc" placeholder="xxx" required>
 									</div>
 								</div>
 								<div class="form-row form-row-2">
@@ -231,7 +231,7 @@
 			            <!-- SECTION 6 -->
 			            <h2>
 			            	<span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
-			            	<span class="step-number">Step 5</span>
+			            	<span class="step-number">Step 6</span>
 			            	<span class="step-text">Confirm Your Details</span>
 			            </h2>
 			            <section>
@@ -250,11 +250,11 @@
 											</tr>
 											<tr class="space-row">
 												<th>Card Type:</th>
-												<td id="card-type-val"></td>
+												<td id="cardtype-val"></td>
 											</tr>
 											<tr class="space-row">
 												<th>Card Number:</th>
-												<td id="card-number-val"></td>
+												<td id="cardnumber-val"></td>
 											</tr>
 											<tr class="space-row">
 												<th>CVC:</th>
@@ -262,11 +262,11 @@
 											</tr>
 											<tr class="space-row">
 												<th>Expiry Month:</th>
-												<td id="month-val"></td>
+												<td id="expmonth-val"></td>
 											</tr>
 											<tr class="space-row">
 												<th>Expiry Year:</th>
-												<td id="year-val"></td>
+												<td id="expyear-val"></td>
 											</tr>
 										</tbody>
 									</table>
