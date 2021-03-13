@@ -157,23 +157,36 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="assets-tab" data-toggle="tab" href="#assets" role="tab" aria-controls="assets" aria-selected="false">Assets</a>
                                 </li>
+                                {% if appl.loanApplicationStatus == 'APP' %}
                                 <li class="nav-item">
                                     <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payment</a>
                                 </li>
+                                {% endif %}
                                 <li class="nav-item">
                                     <a class="nav-link" id="payment_info-tab" data-toggle="tab" href="#payment_info" role="tab" aria-controls="payment_info" aria-selected="false">Payment Information</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <!--<div class="col-md-2">
-                        <a href="/edit_profile">Edit Profile</a>
-                         <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> 
-                    </div>-->
+                    <div class="col-md-2">
+                        <a href="/loginmodule/logout">Logout</a>
+                         <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Logout"/>  -->
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
+                        <br>
+                            {% if appl.loanApplicationStatus != 'APP' %}
+                                <h4><b>Loan Application Status</b></h4>
+                            
+                                {% if appl.loanApplicationStatus == 'FUP' %}
+                                    <p>File Under Process..</p>
+                                {% elif appl.loanApplicationStatus == 'REJ' %}
+                                    <p>Rejected..</p>
+                                {% endif %} 
+                        {% endif %}
                     </div>
+                   
                     <div class="col-md-4">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -307,17 +320,12 @@
                                             </div>
                                         </div>
                             </div>
+                            {% if appl.loanApplicationStatus == 'APP' %}
                             <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
-                                
-                                    {% if appl.loanApplicationStatus == 'APP' %}
-                                        {% include "view_payment_details.html" %}
-                                        <!--<iframe src="payment_details/view_payment_details.html" width="1000px" height="550px" ></iframe> -->
-                                    {% elif appl.loanApplicationStatus == 'FUP' %}
-                                        <p>Your Application Staus is under process</p>
-                                    {% elif appl.loanApplicationStatus == 'REJ' %}
-                                        <p>Your Application Staus is rejected</p>
-                                    {% endif %}
+                                {% include "view_payment_details.html" %}
+                                <!--<iframe src="payment_details/view_payment_details.html" width="1000px" height="550px" ></iframe> -->
                             </div>
+                            {% endif %}
                             <div class="tab-pane fade" id="payment_info" role="tabpanel" aria-labelledby="payment_info-tab">
                                     <div class="row">
                                             <div class="col-md-6">

@@ -73,7 +73,7 @@ def loggedin(request):
     asset = GoldAsset.objects.get(customerId_id = c.customerId)
     application = LoanApplication.objects.get(customerId_id = c.customerId)
     payment = Payment.objects.get(customerId_id = c.customerId)
-    return render(request,'loggedin.html', {"c":c,"a":asset,"appl":application,"p":payment})
+    return render(request,'view_details.html', {"c":c,"a":asset,"appl":application,"p":payment})
 
 def logout(request):
     auth.logout(request)
