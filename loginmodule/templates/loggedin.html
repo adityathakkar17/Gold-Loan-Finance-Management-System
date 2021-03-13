@@ -5,8 +5,69 @@
         <div class="col-12">
             <br>
             <br>
-            <p> Welcome {{full_name}} you are logged in! </p>
-            <p> Click <a href="/loginmodule/login/" </a> to logout </p>
+            {% if c %}
+            <p> Welcome {{c.username}} you are logged in! </p>
+            <h3>Customer Details</h3>
+            <table border="1">
+                <tr>
+                <th>Customer Name</th>
+                <th>Aadhaar Id</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>D.O.B</th>
+                <th>Application Date</th>
+                </tr>
+                <tr>
+                    <td>{{c.customerName}}</td>              
+                    <td>{{c.aadhaarId}}</td>               
+                    <td>{{c.mobile}}</td>               
+                    <td>{{c.address}}</td>               
+                    <td>{{c.dob}}</td>
+                    <td>{{c.applicationDate}}</td>
+                </tr>
+            </table>
+            {% endif %}
+            {% if a %}
+            <br>
+            <h3>Asset Details</h3>
+            <table border="1">
+                <tr>
+                <th>weight</th>
+                <th>goldtype</th>
+                </tr>
+                <tr>
+                    <td>{{a.weight}}</td>
+                    {% if a.goldtype == "B" %}              
+                    <td>Biscuit</td>   
+                    {% endif %}                         
+                </tr>
+            </table>
+            {% endif %}
+            {% if appl %}
+            <br>
+            <h3>Application Details</h3>
+            <table border="1">
+                <tr>
+                <th>loanApplicationStatus</th>
+                <th> lentRateOfInterest</th>
+                <th>lentGoldValue</th>
+                <th>lentLoanTenure</th>
+                <th>principalAmount</th>
+                </tr>
+                <tr>
+                    {% if appl.loanApplicationStatus == "FUP" %}              
+                    <td>File Under Process</td>
+                    {% endif %}
+                                  
+                    <td>{{appl.lentRateOfInterest}}</td>               
+                    <td>{{appl.lentGoldValue}}</td>               
+                    <td>{{appl.lentLoanTenure}}</td>               
+                    <td>{{appl.principalAmount}}</td>
+                </tr>
+            </table>
+            {% endif %}
+
+            <p> Click <a href="/loginmodule/logout/" </a> to logout </p>
         </div>
     </div>
 </div>

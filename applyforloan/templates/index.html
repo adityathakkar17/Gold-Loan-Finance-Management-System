@@ -25,8 +25,6 @@
 			{% endif %}
 		</div>
 	<div class="page-content" style="background-image: url('/static/loanapplication/images/wizard-v1.jpg')">
-		
-		
 		<div class="wizard-v1-content">
 			<div class="wizard-form">
 		        <form class="form-register" id="form-register" action="/applyforloan/addCustomer/" method="POST">{% csrf_token %}
@@ -82,7 +80,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label for="aadhaarId">Aadhhar Id*</label>
-										<input type="number" placeholder="Aadhaar Id" class="form-control" minlelgth=12 maxlelgth=12 name="aadhaarId" required>
+										<input type="number" placeholder="Aadhaar Id" class="form-control" minlength=12 maxlength=12 name="aadhaarId" required>
 									</div>
 								</div>
 								<div class="form-row">
@@ -99,7 +97,7 @@
 								
 									<div class="form-holder">
 										<label for="mobile">Mobile Number*</label>
-										<input type="number" placeholder="Mobile Number" class="form-control" minlelgth=10 maxlelgth=10 name="mobile" required>
+										<input type="tel" placeholder="Mobile Number" class="form-control" minlength=10 maxlength=10 name="mobile" pattern="[0-9]{10}" required>
 									</div>
 								</div>
 								<div class="form-row">
@@ -137,7 +135,7 @@
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label for="tenure">Loan Tenure*</label>
-										<input type="number" placeholder="Tenure(in year)" class="form-control" id="tenure" name="tenure" required>
+										<input type="number" placeholder="(in year)" class="form-control" id="tenure" name="tenure" required>
 									</div>
 								</div>
 								<div class="form-row">
@@ -148,18 +146,17 @@
 								</div>
 								<div class="form-row">
 									<div class="form-holder">
-										<label for="goldweight">Gold Weight*</label>
-										<input type="number" placeholder="Gold Weight(IN gms)" class="form-control" id="weight" name="goldweight" required >
+										<label for="goldtype">Gold Type*</label><br>
+										<select name="goldtype" id="goldtype">
+											<option name="Biscuit" value="B">Biscuit</option>
+											<option name="Ornaments" value="O">Ornaments</option>
+											<option  name="Coin" value="C">Coin</option>
+										</select>
 									</div>
 									<div class="form-holder">
-
-										<label for="goldtype">Gold Type*</label><br>
-
-										<select name="cars" id="cars">
-											<option name="Biscuit" value="Biscuit">Biscuit</option>
-											<option name="Ornaments" value="Ornaments">Ornaments</option>
-											<option  name="Coin" value="Coin">Coin</option>
-										</select>
+										<!-- todo:-set min attribute for gold weight -->
+										<label for="goldweight">Gold Weight*</label>
+										<input type="number" placeholder="(in gms)" class="form-control" id="weight" name="goldweight" required style="height:50px">
 									</div>
 								</div>
 							</div>

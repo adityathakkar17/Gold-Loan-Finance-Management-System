@@ -1,8 +1,9 @@
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .models import Customer
+from .models import Customer, GoldAsset, LoanApplication
 from django.core.exceptions import ValidationError
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Create your views here.
 def applyForLoan(request):
@@ -23,6 +24,18 @@ def addCustomer(request):
         income = income,address = address,mobile = mobile,dob=dob)
         try:
             c.save()
+            user = User.objects.create_user(username = username, password = password)
+            user.save()
+            goldtype = request.POST.get('goldtype')
+            weight = request.POST.get('goldweight')
+            customerId = c.customerId
+            g = GoldAsset(goldtype=goldtype,weight=weight,customerId_id=customerId)
+            g.save()
+            loanamount = request.POST.get('loanamount')
+            tenure = request.POST.get('tenure')
+            assetId = g.assetID
+            l = LoanApplication(principalAmount = loanamount,lentLoanTenure = tenure,customerId_id = customerId,assetId_id = assetId)
+            l.save()
             # return render(request,"success.html")
             messages.success(request,"Application submitted successfully!!")
             messages.success(request,"Login with your username and passsword.")
