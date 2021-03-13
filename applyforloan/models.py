@@ -42,3 +42,11 @@ class LoanApplication(models.Model):
     ltvRatio=models.DecimalField(max_digits=5,decimal_places=2,default=0.75)
     customerId=models.ForeignKey(Customer,null=True,on_delete=models.CASCADE)
     assetId=models.ForeignKey(GoldAsset,null=True,on_delete=models.CASCADE)
+
+class Payment(models.Model):
+    cardtype = models.CharField(max_length=50)
+    cardnumber= models.PositiveIntegerField()
+    cvc= models.PositiveIntegerField()
+    expmonth = models.CharField(max_length=50)
+    expyear = models.PositiveIntegerField()
+    customerId=models.ForeignKey(Customer,null=True,on_delete=models.CASCADE)

@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .models import Customer, GoldAsset, LoanApplication
+from .models import Customer, GoldAsset, LoanApplication, Payment
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -36,6 +36,13 @@ def addCustomer(request):
             assetId = g.assetID
             l = LoanApplication(principalAmount = loanamount,lentLoanTenure = tenure,customerId_id = customerId,assetId_id = assetId)
             l.save()
+            cardtype = request.POST.get('cardtype')
+            cardname = request.POST.get('cardname')
+            cvc = request.POST.get('cvc')
+            expmonth = request.POST.get('expmonth')
+            expyear = request.POST.get('expyear')
+            p = Payment(cardtype = cardtype,cardname = cardname,cvc = cvc,expmonth =  expmonth,expyear = expyear,customerId_id = customerId)
+            p.save()
             # return render(request,"success.html")
             messages.success(request,"Application submitted successfully!!")
             messages.success(request,"Login with your username and passsword.")
