@@ -4,6 +4,7 @@ from .models import Customer, GoldAsset, LoanApplication, Payment
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.contrib.auth.models import User
+from math import pow
 
 # Create your views here.
 def applyForLoan(request):
@@ -34,7 +35,9 @@ def addCustomer(request):
             loanamount = request.POST.get('loanamount')
             tenure = request.POST.get('tenure')
             assetId = g.assetID
-            l = LoanApplication(principalAmount = loanamount,lentLoanTenure = tenure,customerId_id = customerId,assetId_id = assetId)
+            r = 9.5/(12*100)
+            emi = ((loanamount * r * pow((1+r),tenure*12))/(pow((1+r),tenure*12)-1))
+            l = LoanApplication(principalAmount = loanamount,lentLoanTenure = tenure,emi = emi,customerId_id = customerId,assetId_id = assetId)
             l.save()
             cardtype = request.POST.get('cardtype')
             cardname = request.POST.get('cardname')
@@ -53,4 +56,6 @@ def addCustomer(request):
             # return render(request,"fail.html",{"error":"Please enter proper details"})
     else:
         return render(request,"fail.html",{"message":"First , Please  fill  the details"})
+
+
 

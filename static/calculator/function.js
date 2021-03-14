@@ -7,9 +7,6 @@ function CheckEMI()
         ansD.value = ((val1 * r * Math.pow((1+r),val2*12))/(Math.pow((1+r),val2*12)-1)).toFixed(0);
     }
 
-
-
-
 var rangeSlider = function(){
   var slider = $('.range-slider'),
       range = $('.range-slider__range'),

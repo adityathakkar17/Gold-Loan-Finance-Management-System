@@ -38,6 +38,7 @@ class LoanApplication(models.Model):
     lentRateOfInterest=models.DecimalField(max_digits=5,decimal_places=2,default=9.5)
     lentGoldValue=models.DecimalField(max_digits=8,decimal_places=2,default=50000)
     lentLoanTenure=models.PositiveSmallIntegerField()
+    emi = models.DecimalField(max_digits=9,decimal_places=2,default=0)
     loanApplicationStatus=models.CharField(max_length=3,choices=ApplicationStatus,default=FILE_UNDER_PROCESS)
     ltvRatio=models.DecimalField(max_digits=5,decimal_places=2,default=0.75)
     customerId=models.ForeignKey(Customer,null=True,on_delete=models.CASCADE)
