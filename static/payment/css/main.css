@@ -113,7 +113,7 @@ iframe {
 }
 
 .wrap-table100 {
-  width: 1300px;
+  width: 1500px;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -129,13 +129,13 @@ th, td {
 }
 
 .column100 {
-  width: 130px;
-  padding-left: 25px;
+  width: 100px;
+  padding-left: 15px;
 }
 
 .column100.column1 {
-  width: 265px;
-  padding-left: 42px;
+  width: 105px;
+  padding-left: 22px;
 }
 
 .row100.head th {

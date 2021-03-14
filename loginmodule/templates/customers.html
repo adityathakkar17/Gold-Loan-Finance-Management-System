@@ -1,0 +1,62 @@
+<div class="limiter">
+	<div class="container-table100">
+		<div class="wrap-table100">
+			<div class="table100 ver6 m-b-110">
+				<table data-vertable="ver6">
+					{% if application %}
+					<thead>
+						<tr class="row100 head">
+							<th class="column100 column1" data-column="column1">ID</th>
+							<th class="column100 column2" data-column="column2">Name</th>
+							<th class="column100 column3" data-column="column3">Aadhhar Id</th>
+							<th class="column100 column4" data-column="column4">Nominee Name</th>
+							<th class="column100 column5" data-column="column5">income</th>
+							<th class="column100 column6" data-column="column6">Address</th>
+							<th class="column100 column7" data-column="column7">mobile</th>
+							<th class="column100 column8" data-column="column8">Application Date</th>
+							<th class="column100 column8" data-column="column8">Gold Weight</th>
+							<th class="column100 column8" data-column="column8">Gold type</th>
+							<th class="column100 column8" data-column="column8">Loan Amount</th>
+							<th class="column100 column8" data-column="column8">Tenure</th>
+							<th class="column100 column8" data-column="column8">Lent Gold Value</th>
+							<th class="column100 column8" data-column="column8">EMI</th>
+							<th class="column100 column8" data-column="column8">Status</th>
+						</tr>
+					</thead>
+					{% else %}
+						<h4>No applications approved!!</h4>
+					{% endif %}
+{% for c in customer %}
+	{% for a in asset %}		
+		{% for appl in application %}	
+			{% if a.customerId_id == c.customerId and appl.customerId_id == c.customerId %}
+				{% if appl.loanApplicationStatus == 'APP' %}
+					<tbody>
+						<tr class="row100">
+							<td class="column100 column1" data-column="column1">{{c.customerId}}</td>
+							<td class="column100 column2" data-column="column2">{{c.customerName}}</td>
+							<td class="column100 column3" data-column="column3">{{c.aadhaarId}}</td>
+							<td class="column100 column4" data-column="column4">{{c.nomineeName}}</td>
+							<td class="column100 column5" data-column="column5">{{c.income}}</td>
+							<td class="column100 column6" data-column="column6">{{c.address}}</td>
+							<td class="column100 column7" data-column="column7">{{c.mobile}}</td>
+							<td class="column100 column8" data-column="column8">{{c.applicationDate}}</td>
+							<td class="column100 column8" data-column="column8">{{a.weight}} gms</td>
+							<td class="column100 column8" data-column="column8">{{a.goldtype}}</td>
+							<td class="column100 column8" data-column="column8">{{appl.principalAmount}}</td>
+							<td class="column100 column8" data-column="column8">{{appl.lentLoanTenure}}</td>
+							<td class="column100 column8" data-column="column8">{{appl.lentGoldValue}}</td>
+							<td class="column100 column8" data-column="column8">{{appl.emi}}</td>
+							<td class="column100 column8" data-column="column8">{{appl.loanApplicationStatus}}</td>
+						</tr>
+					</tbody>
+					{% endif %}
+					{% endif %}
+					{% endfor %}
+					{% endfor %}
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
