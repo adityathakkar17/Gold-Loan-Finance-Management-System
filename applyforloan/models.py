@@ -43,7 +43,10 @@ class LoanApplication(models.Model):
     FILE_UNDER_PROCESS='FUP'
     ApplicationStatus=[(APPROVED,'Approved'),(REJECTED,'Rejected'),(FILE_UNDER_PROCESS,'Under process')]
     loanId=models.AutoField(primary_key=True)
-    principalAmount=models.DecimalField(max_digits=9,decimal_places=2,default=0)
+    principalAmount=models.DecimalField(max_digits=20,decimal_places=2,default=0)
+    totalLoanAmount = models.DecimalField(max_digits=20,decimal_places=2)
+    paid = models.DecimalField(max_digits=20,decimal_places=2,default=0)
+    emipaid = models.PositiveIntegerField(default=0)
     lentRateOfInterest=models.DecimalField(max_digits=5,decimal_places=2,default=interest)
     lentGoldValue=models.DecimalField(max_digits=8,decimal_places=2,default=goldValue)
     lentLoanTenure=models.PositiveSmallIntegerField()

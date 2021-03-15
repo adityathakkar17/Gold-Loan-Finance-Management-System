@@ -38,7 +38,8 @@ def addCustomer(request):
         t = tenure*12
         r = 9.5/(12*100)
         emi = loanamount * r * pow((1+r),t)/(pow((1+r),t)-1)
-        l = LoanApplication(principalAmount = loanamount,lentLoanTenure = tenure,emi=emi,customerId_id = customerId,assetId_id = assetId)
+        totalLoanAmount = emi*t
+        l = LoanApplication(principalAmount = loanamount,lentLoanTenure = tenure,totalLoanAmount = totalLoanAmount,emi=emi,customerId_id = customerId,assetId_id = assetId)
         l.save()
         cardtype = request.POST.get('cardtype')
         cardnumber = request.POST.get('cardnumber')

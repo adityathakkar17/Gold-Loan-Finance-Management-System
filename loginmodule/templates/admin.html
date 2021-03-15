@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Bootstrap Profile Page Design - Bootsnipp.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -132,21 +131,21 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
-    <!-- Payment scripts-->
-    <link rel="icon" type="image/png" href="/static/payment/images/icons/favicon.ico" />
+    <!-- TTable scripts-->
+    <link rel="icon" type="image/png" href="/static/table/images/icons/favicon.ico" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/static/payment/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/static/payment/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/static/payment/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/static/payment/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/static/payment/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/static/payment/css/util.css">
-    <link rel="stylesheet" type="text/css" href="/static/payment/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/css/main.css">
     <!--===============================================================================================-->
 </head>
 
@@ -156,16 +155,12 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     <img src="/static/images/logo_glfms.jpg" alt="" />
-                    <!--<div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>-->
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-                        Welcome, {{c.customerName}} !!!
+                        Welcome, Admin !!!
                     </h5>
                     <br>
 
@@ -204,36 +199,38 @@
                     </div>
                     <div class="tab-pane fade" id="rates" role="tabpanel" aria-labelledby="rates-tab">
                         <form action="/loginmodule/update_rates/" method="POST">{% csrf_token %}
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Present Gold Rate</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Present Gold Rate</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <p><input name="goldvalue" type="number" value={{goldvalue}}>₹</p>
+                                </div>
+
                             </div>
-                            <div class="col-md-6">
-                                <p><input  name="goldvalue" type="number" value={{goldvalue}}>₹</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Present Loan Rate Of Interest</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><input name="interest" type="number" value={{interest}}>%</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Present Loan Rate Of Interest</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>LTV Ratio</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><input name="ltv_ratio" type="number" value={{ltv}}></p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p><input  name="interest" type="number" value={{interest}}>%</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><input type="submit" value="Update Rates"></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>LTV Ratio</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><input  name="ltv_ratio" type="number" value={{ltv}}></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p><input type="submit" value="Update Rates"></p>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
                     </div>
                 </div>
             </div>

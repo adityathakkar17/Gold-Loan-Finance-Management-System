@@ -7,6 +7,7 @@ from django.contrib import messages
 from applyforloan.models import Customer, GoldAsset, LoanApplication,Payment
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import requires_csrf_token
+import string
 
 def home(request):
     return render(request,"home.html")
@@ -71,7 +72,9 @@ def loggedin_customer(request):
     asset = GoldAsset.objects.get(customerId_id = c.customerId)
     application = LoanApplication.objects.get(customerId_id = c.customerId)
     payment = Payment.objects.get(customerId_id = c.customerId)
-    return render(request,'view_details.html', {"c":c,"a":asset,"appl":application,"p":payment})
+    month = application.emipaid + 1
+    totalmonth = application.lentLoanTenure*12
+    return render(request,'view_details.html', {"c":c,"a":asset,"appl":application,"p":payment,"month":month,"totalmonth":totalmonth})
 
 @login_required(login_url='/loginmodule/login')
 def loggedin_admin(request):
@@ -100,7 +103,7 @@ def logout(request):
     messages.info(request,"Logged out successfully..")
     return render(request,'login.html')
 
-
+@login_required(login_url='/loginmodule/login')
 def approve(request):
     if request.method == "POST":
         customerId = request.POST.get('customerId')
@@ -111,6 +114,7 @@ def approve(request):
     else:
         return redirect('/loginmodule/login')
 
+@login_required(login_url='/loginmodule/login')
 def reject(request):
     if request.method == "POST":
         customerId = request.POST.get('customerId')
@@ -129,4 +133,27 @@ def reject(request):
         return HttpResponseRedirect('/loginmodule/loggedin_admin/')
     else:
         return redirect('/loginmodule/login')
+
+@login_required(login_url='/loginmodule/login')
+def pay_emi(request):
+    if request.method == "POST":
+        customerId = request.POST.get('customerId')
+        month = int(request.POST.get('month'))
+        l = LoanApplication.objects.get(customerId = customerId)
+        if month == l.lentLoanTenure*12:
+            l.emipaid = month
+            l.paid = l.emi + l.paid
+            l.save()
+            messages.success(request,"Congratulations,Full Loan Payment done!!")
+        elif month < l.lentLoanTenure*12:
+            l.emipaid = month
+            l.paid = l.emi + l.paid
+            l.save()
+            payment_done="Payment done successfully for month = " + str(month)
+            messages.success(request,payment_done)
+        return redirect('/loginmodule/loggedin_customer/')
+    else:
+        return redirect('/loginmodule/login')
+        
+    
 

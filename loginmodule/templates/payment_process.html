@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Snippet - BBBootstrap</title>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-color: #e6ebf4;
+        }
+
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 5px 6px 6px 2px #e9ecef;
+
+        }
+
+        .heading {
+            font-size: 15px;
+            font-weight: 00
+        }
+
+        .text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #b1b6bd
+        }
+
+        .pricing {
+            border: 2px solid #304FFE;
+            background-color: #f2f5ff
+        }
+
+        .business {
+            font-size: 20px;
+            font-weight: 500
+        }
+
+        .plan {
+            color: #aba4a4
+        }
+
+        .dollar {
+            font-size: 16px;
+            color: #6b6b6f
+        }
+
+        .amount {
+            font-size: 30px;
+            font-weight: 500
+        }
+
+        .year {
+            font-size: 20px;
+            color: #6b6b6f;
+            margin-top: 19px
+        }
+
+        .detail {
+            font-size: 22px;
+            font-weight: 500
+        }
+
+        .cvv {
+            height: 44px;
+            width: 73px;
+            border: 2px solid #eee
+        }
+
+        .cvv:focus {
+            box-shadow: none;
+            border: 2px solid #304FFE
+        }
+
+        .email-text {
+            height: 55px;
+            border: 2px solid #eee
+        }
+
+        .email-text:focus {
+            box-shadow: none;
+            border: 2px solid #304FFE
+        }
+
+        .payment-button {
+            height: 70px;
+            font-size: 20px
+        }
+    </style>
+    <script type='text/javascript' src=''></script>
+    <script type='text/javascript'
+        src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+    <script type='text/javascript'></script>
+</head>
+
+<body oncontextmenu='return false' class='snippet-body'>
+    <h3 style="color:red" align="center"><u><i>Upcoming instalments:--</i></u></h3>
+    <div class="container mt-5 mb-5 d-flex justify-content-center">
+        <div class="card p-5">
+            <div>
+                <h4 class="heading">EMI Payment</h4>
+                <p class="text">Please make the payment as soon as possible before the month-ending or earlier.</p>
+                <p>For month-{{month}}</p>
+            </div>
+            <div class="pricing p-3 rounded mt-4 d-flex justify-content-between">
+                <div class="d-flex flex-row align-items-center"> <sup class="dollar font-weight-bold">₹</sup> <span
+                        class="amount ml-1 mr-1">{{appl.emi}}</span> <span class="year font-weight-bold">/ month</span>
+                </div> <!-- /pricing table-->
+            </div> <span class="detail mt-5">Payment details</span>
+            <div class="credit rounded mt-4 d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/qHX7vY1.png"
+                        class="rounded" width="70">
+                    <div class="d-flex flex-column ml-3"> <span class="business">Credit Card</span> <span
+                            class="plan">{{p.cardnumber}}</span> </div>
+                </div>
+                <div> <input type="text" class="form-control cvv" value="{{p.cvc}}" placeholder="CVC"> </div>
+            </div>
+            <form action="/loginmodule/pay_emi/" method="POST"> {% csrf_token %}
+                <input type="hidden" name="month" value="{{month}}">
+                <input type="hidden" name="customerId" value="{{c.customerId}}" >
+                <div class="mt-3"> <button class="btn btn-primary btn-block payment-button" type="submit">Proceed to
+                        payment <i class="fa fa-long-arrow-right"></i></button> </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
