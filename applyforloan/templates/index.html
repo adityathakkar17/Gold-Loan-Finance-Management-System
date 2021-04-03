@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title>Apply for Loan</title>
@@ -7,29 +8,32 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
 	<link rel="stylesheet" type="text/css" href="/static/loanapplication/css/raleway-font.css">
-	<link rel="stylesheet" type="text/css" href="/static/loanapplication/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="/static/loanapplication/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 	<!-- Jquery -->
 	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
 	<!-- Main Style Css -->
-    <link rel="stylesheet" href="/static/loanapplication/css/style.css"/>
+	<link rel="stylesheet" href="/static/loanapplication/css/style.css" />
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
 	<script type="text/javascript" src="http://pg.gaarsam.com//html/assets/js/jquery.validate.min.js"></script>
 </head>
+
 <body>
 	<h1 align="center"><a href="/loginmodule/home">Home</a></h1>
 	<div class="error">
-			{% if messages %}
-				{% for message in messages %}
-					{{message}}
-				{% endfor %}
-			{% endif %}
-		</div>
+		{% if messages %}
+		{% for message in messages %}
+		{{message}}
+		{% endfor %}
+		{% endif %}
+	</div>
 	<div class="page-content" style="background-image: url('/static/loanapplication/images/wizard-v1.jpg')">
 		<div class="wizard-v1-content">
 			<div class="wizard-form">
-		        <form class="form-register" id="form-register" action="/applyforloan/addCustomer/" method="POST">{% csrf_token %}
-		        	<div id="form-total">
-		        		<!-- SECTION 1 --> 
+				<form class="form-register" id="form-register" action="/applyforloan/addCustomer/" method="POST">
+					{% csrf_token %}
+					<div id="form-total">
+						<!-- SECTION 1 -->
 			            <h2>
 			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
 			            	<span class="step-number">Step 1</span>
@@ -37,12 +41,6 @@
 			            </h2>
 			            <section>
 			                <div class="inner">
-								<!-- <div class="form-row">
-									 <div class="form-holder form-holder-2">
-										<label for="username">Username*</label>
-										<input type="text" placeholder="Username" class="form-control" id="username" name="username" required>
-									</div>
-								</div>  -->
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label for="email">Email Address*</label>
@@ -114,34 +112,38 @@
 							</div>
 			            </section>
 						<!-- SECTION 3   -->
-			            <h2>
-			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
-			            	<span class="step-number">Step 3</span>
-			            	<span class="step-text">EMI Calculator</span>
-			            </h2>
-			            <section >
-						
+						<h2>
+							<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
+							<span class="step-number">Step 3</span>
+							<span class="step-text">EMI Calculator</span>
+						</h2>
+						<section>
 							{% include "calc.html" %}
 
-			            </section>
+						</section>
 						<!--  SECTION 4 -->
-			            <h2>
-			            	<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
-			            	<span class="step-number">Step 4</span>
-			            	<span class="step-text">Loan Infomation</span>
-			            </h2>
-			            <section>
-			                <div class="inner">
+						<h2>
+							<span class="step-icon"><i class="zmdi zmdi-account"></i></span>
+							<span class="step-number">Step 4</span>
+							<span class="step-text">Loan Infomation</span>
+						</h2>
+						<section>
+							<div class="inner">
+								<div class="form-row">
+								<div class="form-holder">
+									<!-- todo:-set min attribute for gold weight -->
+									
+									<label for="goldweight">Gold Weight*</label>
+									<input type="number" placeholder="(in gms)" class="form-control" id="weight"
+										name="goldweight" required style="height:50px">
+								</div>
+							</div>
+
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label for="tenure">Loan Tenure*</label>
-										<input type="number" placeholder="(in year)" class="form-control" id="tenure" name="tenure" required>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<label for="loanamount">Loan Amount*</label>
-										<input type="number" placeholder="Loan Amount" class="form-control" id="loanamount" name="loanamount" required >
+										<input type="number" placeholder="(in year)" class="form-control" id="tenure"
+											name="tenure" required>
 									</div>
 								</div>
 								<div class="form-row">
@@ -150,30 +152,28 @@
 										<select name="goldtype" id="goldtype">
 											<option name="Biscuit" value="B">Biscuit</option>
 											<option name="Ornaments" value="O">Ornaments</option>
-											<option  name="Coin" value="C">Coin</option>
+											<option name="Coin" value="C">Coin</option>
 										</select>
 									</div>
-									<div class="form-holder">
-										<!-- todo:-set min attribute for gold weight -->
-										<label for="goldweight">Gold Weight*</label>
-										<input type="number" placeholder="(in gms)" class="form-control" id="weight" name="goldweight" required style="height:50px">
-									</div>
+
 								</div>
 							</div>
-			            </section>
+						</section>
 						<!-- SECTION 5 -->
-			            <h2> 
-			            	<span class="step-icon"><i class="zmdi zmdi-card"></i></span>
-			            	<span class="step-number">Step 5</span>
-			            	<span class="step-text">Payment Infomation</span>
-			            </h2>
-			            <section>
-			                <div class="inner">
+						<h2>
+							<span class="step-icon"><i class="zmdi zmdi-card"></i></span>
+							<span class="step-number">Step 5</span>
+							<span class="step-text">Payment Infomation</span>
+						</h2>
+						<section>
+							<div class="inner">
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label for="card-type">Card Type*</label>
-										<select name="cardtype" id="cardtype" class="form-control" style="height:50px" required>
-											<option value="Select Credit Card Type" disabled selected>Select Credit Card Type</option>
+										<select name="cardtype" id="cardtype" class="form-control" style="height:50px"
+											required>
+											<option value="Select Credit Card Type" disabled selected>Select Credit Card
+												Type</option>
 											<option value="Business Credit Cards">Business Credit Cards</option>
 											<option value="Limited Purpose Cards">Limited Purpose Cards</option>
 											<option value="Prepaid Cards">Prepaid Cards</option>
@@ -185,7 +185,8 @@
 								<div class="form-row form-row-2">
 									<div class="form-holder ">
 										<label for="cardnumber">Card Number</label>
-										<input type="text" name="cardnumber" class="card-number" id="cardnumber" placeholder="ex: 489050625008xxxx">
+										<input type="text" name="cardnumber" class="card-number" id="cardnumber"
+											placeholder="ex: 489050625008xxxx" required>
 									</div>
 									<div class="form-holder">
 										<label for="cvc">CVC*</label>
@@ -195,7 +196,7 @@
 								<div class="form-row form-row-2">
 									<div class="form-holder">
 										<label for="expmonth">Expiry Month</label>
-										<select name="expmonth" id="expmonth" class="form-control" style="height:50px">
+										<select name="expmonth" id="expmonth" class="form-control" style="height:50px" required>
 											<option value="" disabled selected>Expiry Month</option>
 											<option value="January">January</option>
 											<option value="February">February</option>
@@ -214,7 +215,7 @@
 									</div>
 									<div class="form-holder">
 										<label for="expyear">Expiry Year</label>
-										<select name="expyear" id="expyear" class="form-control" style="height:50px">
+										<select name="expyear" id="expyear" class="form-control" style="height:50px" required>
 											<option value="" disabled selected>Expiry Year</option>
 											<option value="2013">2026</option>
 											<option value="2018">2025</option>
@@ -222,21 +223,21 @@
 											<option value="2016">2023</option>
 											<option value="2015">2022</option>
 											<option value="2014">2021</option>
-											
+
 										</select>
 									</div>
 								</div>
 							</div>
-			            </section>
-			            <!-- SECTION 6 -->
-			            <h2>
-			            	<span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
-			            	<span class="step-number">Step 6</span>
-			            	<span class="step-text">Confirm Your Details</span>
-			            </h2>
-			            <section>
-			                <div class="inner">
-			                	<h3>Comfirm Details</h3>
+						</section>
+						<!-- SECTION 6 -->
+						<h2>
+							<span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
+							<span class="step-number">Step 6</span>
+							<span class="step-text">Confirm Your Details</span>
+						</h2>
+						<section>
+							<div class="inner">
+								<h3>Comfirm Details</h3>
 								<div class="form-row table-responsive">
 									<table class="table">
 										<tbody>
@@ -271,11 +272,11 @@
 										</tbody>
 									</table>
 								</div>
-							<button type="submit">Apply for Loan</button>
+								<button type="submit">Apply for Loan</button>
 							</div>
-			            </section>
-		        	</div>
-		        </form>
+						</section>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -285,4 +286,5 @@
 	<script src="/static/loanapplication/js/jquery.steps.js"></script>
 	<script src="/static/loanapplication/js/main.js"></script>
 </body>
+
 </html>

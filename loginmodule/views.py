@@ -4,13 +4,14 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.template.context_processors import csrf
 from django.contrib import messages
-from applyforloan.models import Customer, GoldAsset, LoanApplication,Payment
+from applyforloan.models import Customer, GoldAsset, LoanApplication, LoanRates,Payment
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import requires_csrf_token
 import string
 
 def home(request):
-    return render(request,"home.html")
+    rate = LoanRates.objects.last()
+    return render(request,"home.html",{"goldvalue":rate.GoldValue,"interest":rate.RateOfInterest,"ltv":rate.ltvRatio})
 
 def login(request):
         c = {}
@@ -81,8 +82,9 @@ def loggedin_admin(request):
     c = Customer.objects.all()
     asset = GoldAsset.objects.all()
     application = LoanApplication.objects.all()
-    context =  {"customer":c,"asset":asset,"application":application,"goldvalue":LoanApplication.goldValue,
-    "interest":LoanApplication.interest,"ltv":LoanApplication.ltv_ratio}
+    rate = LoanRates.objects.last()
+    context =  {"customer":c,"asset":asset,"application":application,"goldvalue":rate.GoldValue,
+    "interest":rate.RateOfInterest,"ltv":rate.ltvRatio}
     return render(request,'admin.html',context) 
 
 @login_required(login_url='/loginmodule/login')
@@ -91,9 +93,8 @@ def update_rates(request):
         goldvalue = request.POST.get('goldvalue')
         interest = request.POST.get('interest')
         ltv_ratio = request.POST.get('ltv_ratio')
-        LoanApplication.setGoldValue(LoanApplication,goldvalue)
-        LoanApplication.setInterestValue(LoanApplication,interest)
-        LoanApplication.setLTVRatio(LoanApplication,ltv_ratio)
+        rate=LoanRates(GoldValue=goldvalue,RateOfInterest=interest,ltvRatio=ltv_ratio)
+        rate.save()
         return HttpResponseRedirect('/loginmodule/loggedin_admin/')
     else:
         return redirect('/loginmodule/login')
