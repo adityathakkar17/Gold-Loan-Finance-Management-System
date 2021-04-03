@@ -11,6 +11,10 @@ import string
 
 def home(request):
     rate = LoanRates.objects.last()
+    if rate is None:
+                loanrate = LoanRates()
+                loanrate.save()
+                rate = LoanRates.objects.last()
     return render(request,"home.html",{"goldvalue":rate.GoldValue,"interest":rate.RateOfInterest,"ltv":rate.ltvRatio})
 
 def login(request):
