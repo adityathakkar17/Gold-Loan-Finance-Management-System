@@ -15,8 +15,6 @@
 ## Introduction
 Gold Loan Finance Management System (GLFMS) is an online platform designed to help businesses and individuals manage loans given to customers who mortgage their gold. The system enables users to apply for loans, track loan statuses, make payments, and view details of gold assets.
 
-This project was developed as a part of the B.Tech-CE program at Dharmsinh Desai University under the guidance of Prof. Brijesh S. Bhatt, Prof. Jigar M. Pandya, and Prof. Pinkal C. Chauhan.
-
 ## Features
 - Apply for gold loans.
 - View loan application status.
