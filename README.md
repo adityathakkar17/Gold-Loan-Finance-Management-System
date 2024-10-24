@@ -66,13 +66,13 @@ This project was developed as a part of the B.Tech-CE program at Dharmsinh Desai
 
 ## Screenshots
 ### Home Page
-![Home Page](screenshots/home_page.png)
+![Home Page](static/images/home_page.png)
 
 ### Loan Application
-![Loan Application](screenshots/loan_application.png)
+![Loan Application](static/images/loan_application.png)
 
 ### Admin Dashboard
-![Admin Dashboard](screenshots/admin_dashboard.png)
+![Admin Dashboard](static/images/admin_dashboard.png)
 
 ## Future Enhancements
 - Support for multiple loans per customer.
